@@ -18,7 +18,6 @@ public struct MainView: View {
             }
             Spacer()
             Button("Use URLSession With Combine") {
-                
 
             }
             Spacer()
@@ -26,7 +25,6 @@ public struct MainView: View {
 
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

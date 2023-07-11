@@ -17,7 +17,8 @@ let project = Project(name: "Util",
                             resources: [],
                             dependencies: [
                                 Dependency.MyPackage.SWUtil
-                            ]
+                            ],
+                            scripts: [.swiftLint]
                         ),
                         Project.target(
                             name: "UtilTests",

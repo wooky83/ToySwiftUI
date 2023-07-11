@@ -6,4 +6,3 @@ public struct PostModel: Codable {
     public let title: String
     public let body: String
 }
-

@@ -1,5 +1,4 @@
 import Foundation
 
-struct Util {
-
+struct Empty {
 }

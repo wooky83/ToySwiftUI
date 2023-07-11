@@ -1,0 +1,22 @@
+disabled_rules:
+- line_length
+- identifier_name
+- force_cast
+- shorthand_operator
+- cyclomatic_complexity
+- type_name
+- function_body_length
+- large_tuple
+- type_body_length
+- multiple_closures_with_trailing_closure
+- unused_optional_binding
+- trailing_whitespace
+- nesting
+- function_parameter_count
+- comment_spacing
+
+included:
+excluded:
+
+file_length:
+    warning: 600

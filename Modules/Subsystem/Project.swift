@@ -18,7 +18,8 @@ let project = Project(name: "Subsystem",
                             dependencies: [
                                 .project(target: "Util", path: .relativeToRoot("Modules/Util")),
                                 Dependency.MyPackage.NetworkModule,
-                            ]
+                            ],
+                            scripts: [.swiftLint]
                         ),
                         Project.target(
                             name: "SubsystemTests",

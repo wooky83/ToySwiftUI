@@ -15,7 +15,8 @@ let project = Project(name: "ToySwiftUI",
                             resources: "Resources/**",
                             dependencies: [
                                 .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
-                            ]
+                            ],
+                            scripts: [.swiftLint]
                         ),
                         Project.target(
                             name: "ToySwiftUITests",
