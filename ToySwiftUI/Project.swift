@@ -14,7 +14,10 @@ let project = Project(name: "ToySwiftUI",
                             sources: "Sources/**",
                             resources: "Resources/**",
                             dependencies: [
-                                .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
+                                .project(target: "Home", path: .relativeToRoot("Modules/Features/Home")),
+                                .project(target: "Setting", path: .relativeToRoot("Modules/Features/Setting")),
+                                .project(target: "Vision", path: .relativeToRoot("Modules/Features/Vision")),
+                                .project(target: "Weather", path: .relativeToRoot("Modules/Features/Weather")),
                             ],
                             scripts: [.swiftLint]
                         ),
