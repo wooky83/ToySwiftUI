@@ -13,11 +13,11 @@ let project = Project(name: name,
                       targets: [
                         Project.target(
                             name: name,
-                            product: .framework,
+                            product: .staticFramework,
                             sources: "Sources/**",
                             resources: [],
                             dependencies: [
-                                .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
+                                .project(target: "FeatureSupport", path: .relativeToRoot("Modules/FeatureSupport")),
                             ],
                             scripts: [.swiftLint]
                         ),
