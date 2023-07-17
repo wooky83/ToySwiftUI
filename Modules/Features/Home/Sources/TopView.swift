@@ -33,14 +33,18 @@ public struct TopView: View {
             ScrollView {
                 LazyVGrid(columns: gridItems) {
                     ForEach(filterdMessage) { item in
-                        VStack {
-                            Image(systemName: item.image)
-                            Text(item.title)
+                        NavigationLink {
+                            MyGridView()
+                        } label: {
+                            VStack {
+                                Image(systemName: item.image)
+                                Text(item.title)
+                            }
+                            .frame(width: 160, height: 160)
+                            .background(item.color)
+                            .cornerRadius(20)
+                            .padding()
                         }
-                        .frame(width: 160, height: 160)
-                        .background(item.color)
-                        .cornerRadius(20)
-                        .padding()
                     }
                 }
                 .searchable(text: $searchText)
