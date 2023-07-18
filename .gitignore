@@ -83,8 +83,8 @@ Pods/
 Carthage/Build
 
 # Swift Package Manager
-Package.resolved
-.package.resolved
+# Package.resolved
+# .package.resolved
 .build/
 
 # Tuist derived files ###

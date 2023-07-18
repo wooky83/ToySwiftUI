@@ -6,6 +6,7 @@ struct PhotoModel: Codable {
             let m: String
         }
         let media: Media
+        let title: String
         let description: String
     }
     let items: [Item]

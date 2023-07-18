@@ -14,7 +14,7 @@ let project = Project(name: "FeatureSupport",
                             name: "FeatureSupport",
                             product: .staticFramework,
                             sources: "Sources/**",
-                            resources: [],
+                            resources: ["Resources/**"],
                             dependencies: [
                                 .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
                             ],

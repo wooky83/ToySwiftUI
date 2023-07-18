@@ -1,7 +1,9 @@
 import SwiftUI
+import FeatureSupport
 
 struct MyGridView: View {
 
+    @EnvironmentObject var myEnvironment: MyEnvironmnet
     @StateObject private var viewModel = MyGridViewModel()
     private static var threeDividedWidth: CGFloat {
         (UIScreen.main.bounds.width - 20) / 3
@@ -30,6 +32,8 @@ struct MyGridView: View {
         .navigationTitle("🥱 Grid View")
         .task {
             viewModel.fetchPhotos()
+            let key = await myEnvironment.myActor.publicKey
+            print("key is \(key)")
         }
     }
 }

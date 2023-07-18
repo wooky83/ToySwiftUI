@@ -1,6 +1,8 @@
 import SwiftUI
+import FeatureSupport
 
 public struct TopView: View {
+
     struct MainModel: Identifiable {
         var id = UUID()
         let title: String
@@ -12,7 +14,7 @@ public struct TopView: View {
     }
     private let items: [MainModel] = [
         MainModel(title: "Grid", image: "swift", color: randomColor),
-        MainModel(title: "List1", image: "list.number", color: randomColor),
+        MainModel(title: "List", image: "list.number", color: randomColor),
         MainModel(title: "List2", image: "list.number", color: randomColor),
         MainModel(title: "Foreach", image: "figure.run.square.stack", color: randomColor)
     ]
@@ -34,7 +36,14 @@ public struct TopView: View {
                 LazyVGrid(columns: gridItems) {
                     ForEach(filterdMessage) { item in
                         NavigationLink {
-                            MyGridView()
+                            switch item.title {
+                            case "Grid":
+                                MyGridView()
+                            case "List":
+                                MyListView()
+                            default:
+                                MyGridView()
+                            }
                         } label: {
                             VStack {
                                 Image(systemName: item.image)
