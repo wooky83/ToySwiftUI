@@ -38,7 +38,8 @@ extension Project {
                 base: ["OTHER_LDFFLAGS": "$(inherited)"].merging(baseSettings) { $1 },
                 configurations: [
                     .debug(name: "Debug", settings: [
-                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"
+                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+                        "OTHER_SWIFT_FLAGS": "$(inherited) -DDEBUG",
                     ]),
                     .release(name: "Release", settings: [
                         "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"
