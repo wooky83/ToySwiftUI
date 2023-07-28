@@ -1,12 +1,12 @@
 import ProjectDescription
 
-extension Path {
-    enum Tool {
-        static var swiftLint: Path {
-            .relativeToRoot("Scripts/run_swiftlint.sh")
-        }
-    }
-}
+//extension Path {
+//    enum Tool {
+//        static var swiftLint: Path {
+//            .relativeToRoot("Scripts/run_swiftlint.sh")
+//        }
+//    }
+//}
 
 public extension TargetScript {
     static var swiftLint: Self {
@@ -25,5 +25,16 @@ public extension TargetScript {
             , name: "Run SwiftLint",
             basedOnDependencyAnalysis: false
         )
+    }
+
+    static var crashlyticsRun: Self {
+        .post(
+            script: """
+            ${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
+            """,
+            name: "Firebase Crashlytics Run",
+            basedOnDependencyAnalysis: false
+        )
+
     }
 }

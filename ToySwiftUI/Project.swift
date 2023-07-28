@@ -4,7 +4,9 @@ import ProjectDescriptionHelpers
 let project = Project(name: "ToySwiftUI",
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
-                      packages: [],
+                      packages: [
+                        .FirebaseCrashlytics
+                      ],
                       settings: .none,
                       targets: [
                         Project.target(
@@ -18,8 +20,12 @@ let project = Project(name: "ToySwiftUI",
                                 .project(target: "Setting", path: .relativeToRoot("Modules/Features/Setting")),
                                 .project(target: "Vision", path: .relativeToRoot("Modules/Features/Vision")),
                                 .project(target: "Weather", path: .relativeToRoot("Modules/Features/Weather")),
+                                Dependency.MyPackage.FirebaseCrashlytics,
                             ],
-                            scripts: [.swiftLint]
+                            scripts: [
+                                .swiftLint,
+                                .crashlyticsRun,
+                            ]
                         ),
                         Project.target(
                             name: "ToySwiftUITests",

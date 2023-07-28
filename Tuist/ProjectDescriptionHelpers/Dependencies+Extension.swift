@@ -11,6 +11,11 @@ public extension Package {
         requirement: .branch("master")
     )
 
+    static let FirebaseCrashlytics = Package.remote(
+        url: "https://github.com/firebase/firebase-ios-sdk.git",
+        requirement: .upToNextMajor(from: "10.12.0")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -22,5 +27,6 @@ public extension Dependency {
 public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
     static let NetworkModule: Dependency = .package(product: "NetworkModule")
+    static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
 }
 

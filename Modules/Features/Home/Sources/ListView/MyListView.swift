@@ -3,7 +3,6 @@ import SwiftUI
 struct MyListView: View {
     @ObservedObject var viewModel = MyListViewModel()
     @State private var searchText = ""
-    @Environment(\.dismissSearch) private var dismissSearch
 
     var body: some View {
         List {

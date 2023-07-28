@@ -36,7 +36,14 @@ extension Project {
             dependencies: dependencies,
             settings: .settings(
                 base: ["OTHER_LDFFLAGS": "$(inherited)"].merging(baseSettings) { $1 },
-                configurations: [],
+                configurations: [
+                    .debug(name: "Debug", settings: [
+                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"
+                    ]),
+                    .release(name: "Release", settings: [
+                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"
+                    ]),
+                ],
                 defaultSettings: .recommended(excluding: [
                     "TARGETED_DEVICE_FAMILY",
                     "SWIFT_ACTIVE_COMPILATION_CONDITIONS",
