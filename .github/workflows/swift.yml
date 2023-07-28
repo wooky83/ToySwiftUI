@@ -19,11 +19,6 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '14.3.1'
-      - uses: tuist/tuist-action@0.13.0
-        with:
-          command: 'build'
-          arguments: ''
-      - uses: tuist/tuist-action@0.13.0
-        with:
-          command: 'test'
-          arguments: ''
+      - run: brew install tuist
+      - run: tuist build
+      - run: tuist test
