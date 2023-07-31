@@ -34,22 +34,7 @@ extension Project {
             resources: resources,
             scripts: scripts,
             dependencies: dependencies,
-            settings: .settings(
-                base: ["OTHER_LDFFLAGS": "$(inherited)"].merging(baseSettings) { $1 },
-                configurations: [
-                    .debug(name: "Debug", settings: [
-                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
-                        "OTHER_SWIFT_FLAGS": "$(inherited) -DDEBUG",
-                    ]),
-                    .release(name: "Release", settings: [
-                        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym"
-                    ]),
-                ],
-                defaultSettings: .recommended(excluding: [
-                    "TARGETED_DEVICE_FAMILY",
-                    "SWIFT_ACTIVE_COMPILATION_CONDITIONS",
-                ])
-            ),
+            settings: .makeSettings(),
             coreDataModels: coreDataModels)
     }
 }
