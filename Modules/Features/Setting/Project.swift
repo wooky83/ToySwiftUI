@@ -7,7 +7,9 @@ let project = Project(name: name,
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
-                        .NetworkModule
+                        .NetworkModule,
+                        .RxSwift,
+                        .Snapkit,
                       ],
                       settings: .none,
                       targets: [
@@ -18,6 +20,9 @@ let project = Project(name: name,
                             resources: [],
                             dependencies: [
                                 .project(target: "FeatureSupport", path: .relativeToRoot("Modules/FeatureSupport")),
+                                Dependency.MyPackage.RxSwift,
+                                Dependency.MyPackage.RxCocoa,
+                                Dependency.MyPackage.SanpKit,
                             ],
                             scripts: [.swiftLint]
                         ),

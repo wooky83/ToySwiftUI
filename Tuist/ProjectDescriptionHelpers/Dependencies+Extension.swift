@@ -16,6 +16,16 @@ public extension Package {
         requirement: .upToNextMajor(from: "10.12.0")
     )
 
+    static let RxSwift = Package.remote(
+        url: "https://github.com/ReactiveX/RxSwift.git",
+        requirement: .upToNextMajor(from: "6.6.0")
+    )
+
+    static let Snapkit = Package.remote(
+        url: "https://github.com/SnapKit/SnapKit.git",
+        requirement: .upToNextMajor(from: "5.6.0")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -28,5 +38,8 @@ public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
     static let NetworkModule: Dependency = .package(product: "NetworkModule")
     static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
+    static let RxSwift: Dependency = .package(product: "RxSwift")
+    static let RxCocoa: Dependency = .package(product: "RxCocoa")
+    static let SanpKit: Dependency = .package(product: "SnapKit")
 }
 
