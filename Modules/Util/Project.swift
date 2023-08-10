@@ -2,13 +2,12 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 
-let project = Project(name: "Util",
+let project = Project.make(name: "Util",
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
                         .SWUtil
                       ],
-                      settings: .none,
                       targets: [
                         Project.target(
                             name: "Util",

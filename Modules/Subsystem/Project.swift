@@ -2,13 +2,12 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 
-let project = Project(name: "Subsystem",
+let project = Project.make(name: "Subsystem",
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
                         .NetworkModule
                       ],
-                      settings: .none,
                       targets: [
                         Project.target(
                             name: "Subsystem",
@@ -16,8 +15,8 @@ let project = Project(name: "Subsystem",
                             sources: "Sources/**",
                             resources: [],
                             dependencies: [
-                                .project(target: "Util", path: .relativeToRoot("Modules/Util")),
                                 Dependency.MyPackage.NetworkModule,
+                                .project(target: "Util", path: .relativeToRoot("Modules/Util")),
                             ],
                             scripts: [.swiftLint]
                         ),

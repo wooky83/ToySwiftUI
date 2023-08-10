@@ -25,12 +25,15 @@ extension SettingsDictionary {
 
     enum Phase: String, CaseIterable {
         case debug
+        case alpha
         case release
 
         var name: ConfigurationName {
             switch self {
             case .debug:
                 return "Debug"
+            case .alpha:
+                return "Alpha"
             case .release:
                 return "Release"
             }
@@ -44,6 +47,13 @@ extension SettingsDictionary {
                     settings: .init()
                         .otherSwiftFlags("$(inherited) -DDEBUG")
                         .debugInformationFormat(DebugInformationFormat.dwarf)
+                    )
+            case .alpha:
+                return .debug(
+                    name: name,
+                    settings: .init()
+                        .otherSwiftFlags("$(inherited) -DALPHA")
+                        .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                     )
             case .release:
                 return .debug(

@@ -1,13 +1,12 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let project = Project(name: "ToySwiftUI",
+let project = Project.make(name: "ToySwiftUI",
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
                         .FirebaseCrashlytics
                       ],
-                      settings: .none,
                       targets: [
                         Project.target(
                             name: "ToySwiftUI",

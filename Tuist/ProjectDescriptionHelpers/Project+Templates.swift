@@ -11,6 +11,24 @@ public enum Constants {
     public static let minimumDeploymentTarget: DeploymentTarget = .iOS(targetVersion: "15.0", devices: .iphone)
 }
 
+public extension Project {
+    static func make(name: String, organizationName: String? = nil, options: ProjectDescription.Project.Options = .options(), packages: [ProjectDescription.Package] = [], settings: ProjectDescription.Settings? = nil, targets: [ProjectDescription.Target] = [], schemes: [ProjectDescription.Scheme] = [], fileHeaderTemplate: ProjectDescription.FileHeaderTemplate? = nil, additionalFiles: [ProjectDescription.FileElement] = [], resourceSynthesizers: [ProjectDescription.ResourceSynthesizer] = .default) -> Project {
+        Project(
+            name: name,
+            organizationName: organizationName,
+            options: options,
+            packages: packages,
+            settings: settings ?? .makeSettings(),
+            targets: targets,
+            schemes: schemes,
+            fileHeaderTemplate: fileHeaderTemplate,
+            additionalFiles: additionalFiles,
+            resourceSynthesizers: resourceSynthesizers
+        )
+    }
+
+}
+
 extension Project {
     public static func target(
         name: String,

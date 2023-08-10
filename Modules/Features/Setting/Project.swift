@@ -3,15 +3,13 @@ import ProjectDescriptionHelpers
 
 let name = "Setting"
 
-let project = Project(name: name,
+let project = Project.make(name: name,
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
-                        .NetworkModule,
                         .RxSwift,
                         .Snapkit,
                       ],
-                      settings: .none,
                       targets: [
                         Project.target(
                             name: name,

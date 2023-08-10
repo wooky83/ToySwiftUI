@@ -34,6 +34,7 @@ public extension Dependency {
     enum MyPackage {}
 }
 
+
 public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
     static let NetworkModule: Dependency = .package(product: "NetworkModule")

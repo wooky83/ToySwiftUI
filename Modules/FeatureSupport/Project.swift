@@ -2,13 +2,12 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 
-let project = Project(name: "FeatureSupport",
+let project = Project.make(name: "FeatureSupport",
                       organizationName: "com.wooky",
                       options: .options(automaticSchemesOptions: .disabled),
                       packages: [
                         .SWUtil
                       ],
-                      settings: .none,
                       targets: [
                         Project.target(
                             name: "FeatureSupport",
@@ -17,6 +16,7 @@ let project = Project(name: "FeatureSupport",
                             resources: ["Resources/**"],
                             dependencies: [
                                 .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
+                                Dependency.MyPackage.SWUtil,
                             ],
                             scripts: [.swiftLint]
                         ),
