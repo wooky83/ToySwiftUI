@@ -10,11 +10,12 @@ let mainScheme = Scheme(
     ),
     testAction: .targets(
         [
-//            .init(target: .project(path: "Targets/Network", target: "NetworkTests")),
-//            .init(target: .project(path: "Targets/NetworkAlamofire", target: "NetworkAlamofireTests")),
-//            .init(target: .project(path: "Targets/NetworkURLSession", target: "NetworkURLSessionTests")),
+            //.init(target: .project(path: "Targets/Network", target: "NetworkTests")),
+            //.init(target: .project(path: "Targets/NetworkAlamofire", target: "NetworkAlamofireTests")),
+            //.init(target: .project(path: "Targets/NetworkURLSession", target: "NetworkURLSessionTests")),
         ]
-    )
+    ),
+    runAction: .runAction(configuration: SettingsDictionary.Phase.debug.name)
 )
 
 let workspace = Workspace(

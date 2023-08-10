@@ -21,14 +21,14 @@ public extension Settings {
     }
 }
 
-extension SettingsDictionary {
+public extension SettingsDictionary {
 
     enum Phase: String, CaseIterable {
         case debug
         case alpha
         case release
 
-        var name: ConfigurationName {
+        public var name: ConfigurationName {
             switch self {
             case .debug:
                 return "Debug"
