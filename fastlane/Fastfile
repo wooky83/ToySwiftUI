@@ -1,3 +1,7 @@
+require_relative './libs/project_helper.rb'
+
+extend ProjectHelper
+
 default_platform(:ios)
 
 before_all do
@@ -24,6 +28,8 @@ lane :beta do
     configuration: "Debug",
     destination: "generic/platform=iOS Simulator",
     xcargs: "EXCLUDED_ARCHS=arm64",
+    xcpretty_formatter: xcpretty_formatter_path,
+    derived_data_path: "build/DerivedData",
     skip_package_ipa: true,
     skip_archive: true,
   )

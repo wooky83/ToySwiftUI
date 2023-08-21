@@ -205,6 +205,8 @@ GEM
       rexml (~> 3.2.4)
     xcpretty (0.3.0)
       rouge (~> 2.0.7)
+    xcpretty-json-formatter (0.1.1)
+      xcpretty (~> 0.2, >= 0.0.7)
     xcpretty-travis-formatter (1.0.1)
       xcpretty (~> 0.2, >= 0.0.7)
 
@@ -213,6 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   fastlane
+  xcpretty-json-formatter
 
 BUNDLED WITH
-   2.4.10
+   2.4.19

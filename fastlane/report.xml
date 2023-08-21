@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000192">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: bundle show xcpretty-json-formatter" time="0.12626">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: build_ios_app" time="66.164878">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
