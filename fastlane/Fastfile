@@ -33,15 +33,25 @@ lane :beta do
     skip_package_ipa: true,
     skip_archive: true,
   )
-  UI.success("build debug")
+  UI.success("build debug😁")
 end
 
 desc "Build Alpha"
 lane :alpha do
-  UI.success("build alpha")
+  build_ios_app(
+    scheme: "ToySwiftUI",
+    configuration: "Alpha",
+    destination: "generic/platform=iOS Simulator",
+    xcargs: "EXCLUDED_ARCHS=arm64",
+    xcpretty_formatter: xcpretty_formatter_path,
+    derived_data_path: "build/DerivedData",
+    skip_package_ipa: true,
+    skip_archive: true,
+  )
+  UI.success("build alpha😁")
 end
 
 desc "Build Debug"
 lane :release do
-  UI.success("build release")
+  UI.success("build release😁")
 end
