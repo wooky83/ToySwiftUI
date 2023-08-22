@@ -1,12 +1,16 @@
+require_relative './libs/path_helper.rb'
 require_relative './libs/project_helper.rb'
 
+extend PathHelper
 extend ProjectHelper
+
 
 default_platform(:ios)
 
 before_all do
   repository_root = File.expand_path(File.join(__dir__, '../'))
   ENV['FL_ROOT'] = repository_root
+  ENV['OUTPUT_DIR'] = File.join(repository_root, 'build', 'output')
   UI.message("Repository_root is #{repository_root}.")
 end
 
@@ -29,7 +33,7 @@ lane :beta do
     destination: "generic/platform=iOS Simulator",
     xcargs: "EXCLUDED_ARCHS=arm64",
     xcpretty_formatter: xcpretty_formatter_path,
-    derived_data_path: "build/DerivedData",
+    derived_data_path: derived_data_path,
     skip_package_ipa: true,
     skip_archive: true,
   )
@@ -44,10 +48,16 @@ lane :alpha do
     destination: "generic/platform=iOS Simulator",
     xcargs: "EXCLUDED_ARCHS=arm64",
     xcpretty_formatter: xcpretty_formatter_path,
-    derived_data_path: "build/DerivedData",
+    derived_data_path: derived_data_path,
     skip_package_ipa: true,
     skip_archive: true,
   )
+
+  # upload_symbols_to_crashlytics(
+  #   dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
+  #   gsp_path: "#{ENV['FL_ROOT']}/Firebase/GoogleService-Info.plist",
+  #   binary_path: "#{derived_data_path}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols",
+  # )
   UI.success("build alpha😁")
 end
 
