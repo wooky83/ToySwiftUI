@@ -1,6 +1,5 @@
-import UIKit
 import SwiftUI
-import RxCocoa
+import UIKit
 
 struct MyCollectionView: UIViewControllerRepresentable {
 

@@ -1,0 +1,64 @@
+#/bin/bash
+
+export PATH=/usr/local/bin:$PATH
+
+if [[ -f .git/MERGE_HEAD ]]; then
+    echo "Skipping pre-commit hook since this is a merge commit."
+    exit 0
+fi
+
+IFS='
+'
+
+readonly files_changed=$(git diff --staged --name-only --diff-filter=d --no-color)
+readonly swift_files_changed=($(echo "$files_changed" | grep '.swift$'))
+
+if [[ ! -z ${swift_files_changed} ]]; then
+    for file in "${swift_files_changed[@]}"; do
+        if [[ ! -f "${file}" || -L "${file}" ]]; then
+            echo "Skipping '${file}'; not a regular file or is a symbolic link."
+            continue
+        fi
+
+        # Apply SwiftFormat to just what's staged and just commit that.
+        # A backup of the file is made first before making changes so we can
+        # apply SwiftFormat to that file too and then put it back.
+
+        # Files passed to SwiftFormat need to have the .swift file extension &
+        # be in the same directory so it can find the .swift-version file.
+
+        git show ":${file}" >"${file}.staged.swift" # 현재 Staged되어 있는 부분까지만 staged.swift파일로 복사한다.
+        ./Scripts/swiftformat.sh --quiet --output "${file}.staged.formatted" "${file}.staged.swift"
+        swiftlint autocorrect --config ./.swiftlint.yml "${file}.staged.formatted"
+
+        if [[ $? -ne 0 ]]; then
+            # Maybe SwiftFormat crashed or there was a merge conflict marker present.
+            rm -f "${file}.staged.swift"
+            rm -f "${file}.staged.formatted"
+            echo "SwiftFormat failed to parse ${file}. Perhaps it contains unresolved merge conflicts?" 1>&2
+            exit 1
+        fi
+
+        diff --brief "${file}.staged.swift" "${file}.staged.formatted" >/dev/null
+
+        if [[ $? -ne 0 ]]; then
+            # backup file for unstaged hunk.
+            cp "${file}" "${file}.backup.swift"
+
+            # Add formatted changes to the commit.
+            mv "${file}.staged.formatted" "${file}"
+            git add "${file}"
+
+            ./Scripts/swiftformat.sh --quiet --output "${file}" "${file}.backup.swift"
+            swiftlint autocorrect --config ./.swiftlint.yml "${file}"
+            if [[ $? -eq 0 ]]; then
+                rm "${file}.backup.swift"
+            fi
+        else
+            rm "${file}.staged.formatted"
+        fi
+
+        rm "${file}.staged.swift"
+
+    done
+fi
