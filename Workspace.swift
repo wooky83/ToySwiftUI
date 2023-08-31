@@ -8,11 +8,9 @@ let mainScheme = Scheme(
             .project(path: .relativeToRoot("ToySwiftUI"), target: "ToySwiftUI")
         ]
     ),
-    testAction: .targets(
+    testAction: .testPlans(
         [
-            //.init(target: .project(path: "Targets/Network", target: "NetworkTests")),
-            //.init(target: .project(path: "Targets/NetworkAlamofire", target: "NetworkAlamofireTests")),
-            //.init(target: .project(path: "Targets/NetworkURLSession", target: "NetworkURLSessionTests")),
+            .relativeToRoot("TestPlans/MyTestPlan.xctestplan")
         ]
     ),
     runAction: .runAction(configuration: SettingsDictionary.Phase.debug.name)

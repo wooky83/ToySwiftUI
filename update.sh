@@ -6,6 +6,21 @@ readonly no_color=$'\033[0m'
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 DEVELOPER_MODE=true
 
+while getopts sm:h OPT; do
+  case $OPT in
+  s)
+    DEVELOPER_MODE=false
+    ;;
+  m)
+    echo "Message $OPTARG"    
+    ;;
+  h)
+    echo "^^ NO HELP YET ^^"
+    exit 1
+    ;;
+  esac
+done
+
 if ${DEVELOPER_MODE}; then
     sh Scripts/download_tools.sh
     sh Scripts/copy_githooks.sh

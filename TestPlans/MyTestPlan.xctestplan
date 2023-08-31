@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "91DBF6B0-0763-4B10-82EC-2BD04957EE0B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ToySwiftUI\/ToySwiftUI.xcodeproj",
+      "identifier" : "F04F62B7E9D97DCE0923BA63",
+      "name" : "ToySwiftUI"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ToySwiftUI\/ToySwiftUI.xcodeproj",
+        "identifier" : "73B1278CE52DD5CC2C108ED4",
+        "name" : "ToySwiftUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Features\/Home\/Home.xcodeproj",
+        "identifier" : "AF31213DA71B06E9B09EA3F0",
+        "name" : "HomeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
