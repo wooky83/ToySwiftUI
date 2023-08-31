@@ -12,7 +12,5 @@ if ${DEVELOPER_MODE}; then
 fi
 
 echo "${notice_color}[Generating projects]${no_color}"
-
-tuist clean
 tuist fetch
 tuist generate
