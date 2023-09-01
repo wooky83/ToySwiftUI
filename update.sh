@@ -4,12 +4,12 @@ readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-DEVELOPER_MODE=true
+DEVELOPER_MODE=false
 
-while getopts sm:h OPT; do
+while getopts am:h OPT; do
   case $OPT in
-  s)
-    DEVELOPER_MODE=false
+  a)
+    DEVELOPER_MODE=true
     ;;
   m)
     echo "Message $OPTARG"    

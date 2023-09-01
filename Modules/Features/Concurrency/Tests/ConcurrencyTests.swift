@@ -1,8 +1,8 @@
+@testable import Concurrency
 import Foundation
 import XCTest
-@testable import Subsystem
 
-final class SubsystemTests: XCTestCase {
+final class ConcurrencyTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
