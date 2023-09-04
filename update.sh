@@ -6,7 +6,7 @@ readonly no_color=$'\033[0m'
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 DEVELOPER_MODE=false
 
-while getopts am:h OPT; do
+while getopts afastm:h OPT; do
   case $OPT in
   a)
     DEVELOPER_MODE=true
