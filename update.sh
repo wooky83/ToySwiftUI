@@ -28,4 +28,9 @@ fi
 
 echo "${notice_color}[Generating projects]${no_color}"
 tuist fetch
-tuist generate
+tuist generate --no-open
+
+if ! ${DEVELOPER_MODE}; then
+    echo "${notice_color}[Open project]${no_color}"
+    open ToySwiftUI.xcworkspace
+fi

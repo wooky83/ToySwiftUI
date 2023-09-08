@@ -19,11 +19,26 @@ end
 ########################################################################
 # | Lane         | Configuration            | Scheme                   |
 # | -------------|--------------------------|--------------------------|
+# | test         | Debug                    | ToySwiftUI               |
 # | beta         | Debug                    | ToySwiftUI               |
 # | alpha        | alpha                    | ToySwiftUI               |
 # | release      | release                  | ToySwiftUI               |
 ########################################################################
 
+desc "Build Debug"
+lane :test do
+  run_tests(
+    workspace: "ToySwiftUI.xcworkspace",
+    scheme: "ToySwiftUI",
+    configuration: "Debug",
+    destination: "platform=iOS Simulator,name=iPhone 14 Pro",
+    xcpretty_formatter: xcpretty_formatter_path,
+    derived_data_path: derived_data_path,
+    reset_simulator: true,
+    testplan: "MyTestPlan"
+  )
+  UI.success("test debug😁")
+end
 
 desc "Build Debug"
 lane :beta do
