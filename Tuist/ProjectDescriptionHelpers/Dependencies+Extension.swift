@@ -37,7 +37,7 @@ public extension Dependency {
 
 public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
-    static let NetworkModule: Dependency = .package(product: "NetworkModule")
+    static let NetworkModule: Dependency = .package(product: "URLSessionNetwork")
     static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
     static let RxSwift: Dependency = .package(product: "RxSwift")
     static let RxCocoa: Dependency = .package(product: "RxCocoa")
