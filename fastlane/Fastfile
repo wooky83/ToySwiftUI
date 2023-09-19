@@ -34,7 +34,10 @@ lane :test do
     device: "iPhone 14 Pro",
     parallel_testing: true,
     xcpretty_formatter: xcpretty_formatter_path,
+    result_bundle: true,
     derived_data_path: derived_data_path,
+    output_directory: test_reports_path,
+    buildlog_path: test_reports_path,
     reset_simulator: true,
     testplan: "MyTestPlan"
   )
