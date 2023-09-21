@@ -33,7 +33,7 @@ lane :test do
     configuration: "Debug",
     device: "iPhone 14 Pro",
     parallel_testing: true,
-    xcpretty_formatter: xcpretty_formatter_path,
+    xcodebuild_formatter: "xcbeautify",
     result_bundle: true,
     derived_data_path: derived_data_path,
     output_directory: test_reports_path,
