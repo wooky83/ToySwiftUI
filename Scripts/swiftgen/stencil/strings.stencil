@@ -1,0 +1,54 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+{% macro parametersBlock types %}{% filter removeNewlines:"leading" %}
+  {% for type in types %}
+    _ p{{forloop.counter}}: {{type}}{% if not forloop.last %}, {% endif %}
+  {% endfor %}
+{% endfilter %}{% endmacro %}
+{% macro recursiveBlock table item %}
+    {% for string in item.strings %}
+    {% if not param.noComments %}
+    /// {{string.translation}} ("{{string.key}}")
+    {% endif %}
+    {% if string.types %}
+    static func {{string.key|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}({% call parametersBlock string.types %}) -> String {
+    {% else %}
+    static var {{string.key|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: String {
+    {% endif %}
+        _localized{% if string.types %}Format{% endif %}String(forKey: "{{string.key}}"{% for type in string.types %}, p{{forloop.counter}}{% endfor %})
+    }
+    {% endfor %}
+    {% for child in item.children %}
+    {% call recursiveBlock table child %}
+    {% endfor %}
+{% endmacro %}
+{% if tables.count > 0 %}
+import Foundation
+import LineJPBankSubsystem
+
+{% set enumName %}{{param.enumName|default:"LocalizableStrings"}}{% endset %}
+{% set tableName %}{{tables.first.name}}{% endset %}
+public enum {{enumName}} { }
+
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length identifier_name line_length type_body_length
+public extension {{enumName}} {
+    {% call recursiveBlock tableName tables.first.levels %}
+
+    // swiftlint:disable implicit_return
+    private static func _localizedString(forKey key: String) -> String {
+    {% if enumName == "LocalizableStrings" %}
+        NSLocalizedString(key, tableName: "{{tableName}}", bundle: Bundle.commonResourceBundle, comment: "")
+    {% else %}
+        NSLocalizedString(key, tableName: "{{tableName}}", comment: "")
+    {% endif %}
+    }
+    // swiftlint:enable implicit_return
+
+    private static func _localizedFormatString(forKey key: String, _ arguments: CVarArg...) -> String {
+        String(format: _localizedString(forKey: key), locale: .current, arguments: arguments)
+    }
+}
+{% else %}
+// No strings found.
+{% endif %}
