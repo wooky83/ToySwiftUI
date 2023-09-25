@@ -13,7 +13,7 @@ public struct TopView: View {
         Color(red: .random(in: 0..<1), green: .random(in: 0..<1), blue: .random(in: 0..<1))
     }
     private let items: [MainModel] = [
-        MainModel(title: "Grid", image: "swift", color: randomColor),
+        MainModel(title: "Grid", image: "swift", color: Color(Style.Color.uniquePink.value)),
         MainModel(title: "List", image: "list.number", color: randomColor),
         MainModel(title: "List2", image: "list.number", color: randomColor),
         MainModel(title: "Foreach", image: "figure.run.square.stack", color: randomColor)

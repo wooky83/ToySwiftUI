@@ -1,12 +1,10 @@
 import ProjectDescription
 
-//extension Path {
-//    enum Tool {
-//        static var swiftLint: Path {
-//            .relativeToRoot("Scripts/run_swiftlint.sh")
-//        }
-//    }
-//}
+extension Path {
+    static func relativeToScript(_ pathString: String) -> Path {
+        .relativeToRoot("Scripts/\(pathString)")
+    }
+}
 
 public extension TargetScript {
     static var swiftLint: Self {
@@ -23,6 +21,14 @@ public extension TargetScript {
             fi
             """
             , name: "Run SwiftLint",
+            basedOnDependencyAnalysis: false
+        )
+    }
+
+    static var swiftGen: Self {
+        .pre(
+            path: .relativeToScript("run_swiftgen.sh"),
+            name: "Run SwiftGen",
             basedOnDependencyAnalysis: false
         )
     }

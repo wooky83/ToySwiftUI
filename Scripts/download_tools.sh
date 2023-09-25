@@ -3,7 +3,7 @@
 readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 
-NEED_TOOL_LIST=("swiftformat" "swiftlint" "mint")
+NEED_TOOL_LIST=("swiftformat" "swiftlint" "mint" "xcbeautify")
 SCRIPT_DIR=$(dirname "$0")
 
 function check_brew() {
