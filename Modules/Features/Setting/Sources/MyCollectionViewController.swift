@@ -43,6 +43,7 @@ class MyCollectionViewController: BaseViewController {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
 
     private func configureLayout() -> UICollectionViewCompositionalLayout {
@@ -146,11 +147,17 @@ extension MyCollectionViewController: UICollectionViewDataSource {
         ) as! MyCollectionViewCell
         switch self.dataSource[indexPath.section] {
         case let .first(items):
-            cell.prepare(text: items[indexPath.item].value)
+            cell.configure(text: items[indexPath.item].value)
         case let .second(items):
-            cell.prepare(text: items[indexPath.item].value)
+            cell.configure(text: items[indexPath.item].value)
         }
         return cell
+    }
+}
+
+extension MyCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(MyDataSourceCollectionViewController(), animated: true)
     }
 }
 
@@ -180,7 +187,7 @@ final class MyCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func prepare(text: String) {
+    func configure(text: String) {
         self.label.text = text
     }
 }
