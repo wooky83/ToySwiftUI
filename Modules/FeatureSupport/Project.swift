@@ -1,37 +1,15 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-
-let project = Project.make(name: "FeatureSupport",
-                           organizationName: "com.wooky",
-                           options: .options(automaticSchemesOptions: .disabled),
-                           packages: [
-                               .SWUtil
-                           ],
-                           targets: [
-                               Project.target(
-                                   name: "FeatureSupport",
-                                   product: .staticFramework,
-                                   sources: "Sources/**",
-                                   resources: ["Resources/**"],
-                                   dependencies: [
-                                       .project(target: "Subsystem", path: .relativeToRoot("Modules/Subsystem")),
-                                       Dependency.MyPackage.SWUtil,
-                                   ],
-                                   scripts: [
-                                       .swiftLint,
-                                       .swiftGen
-                                   ]
-                               ),
-                               Project.target(
-                                   name: "FeatureSupportTests",
-                                   product: .unitTests,
-                                   sources: [
-                                       "Tests/**"
-                                   ],
-                                   dependencies: [
-                                       .target(name: "FeatureSupport")
-                                   ]
-                               ),
-                           ],
-                           schemes: [])
+let project = Project.staticFramework(
+    name: "FeatureSupport",
+    resources: [
+        "Resources/**",
+    ],
+    scripts: [
+        .swiftGen
+    ],
+    dependencies: [
+        Module.Subsystem.dependency,
+    ]
+)

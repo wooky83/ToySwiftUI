@@ -6,7 +6,6 @@ public extension Settings {
             .bitcodeEnabled(false)
             .merging(["ONLY_ACTIVE_ARCH": true])
 
-
         let configurations = SettingsDictionary.Phase.allCases.map { $0.configuration }
 
         return Settings.settings(
@@ -48,7 +47,7 @@ public extension SettingsDictionary {
                         .otherSwiftFlags("$(inherited) -DDEBUG")
                         .debugInformationFormat(DebugInformationFormat.dwarf)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui"])
-                    )
+                )
             case .alpha:
                 return .debug(
                     name: name,
@@ -56,7 +55,7 @@ public extension SettingsDictionary {
                         .otherSwiftFlags("$(inherited) -DALPHA")
                         .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui.alpha"])
-                    )
+                )
             case .release:
                 return .debug(
                     name: name,
@@ -64,7 +63,7 @@ public extension SettingsDictionary {
                         .otherSwiftFlags("$(inherited) -DRELEASE")
                         .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui.release"])
-                    )
+                )
             }
         }
 

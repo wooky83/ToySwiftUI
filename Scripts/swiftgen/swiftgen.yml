@@ -6,4 +6,3 @@ xcassets:
     outputs:
       templatePath: ./stencil/colors.stencil
       output: MyUICore/Style/Style+Colors.swift
-
