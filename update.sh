@@ -27,6 +27,9 @@ else
   sh Scripts/copy_githooks.sh
 fi
 
+# Xcode Settings
+./Scripts/xcode-test.sh
+
 echo "${notice_color}[Generating projects]${no_color}"
 tuist fetch
 tuist generate --no-open
