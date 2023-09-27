@@ -3,7 +3,7 @@
 readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 
-NEED_TOOL_LIST=("swiftformat" "swiftlint" "mint" "xcbeautify")
+NEED_TOOL_LIST=("swiftformat" "swiftlint" "swiftgen" "xcbeautify" "xcodes")
 SCRIPT_DIR=$(dirname "$0")
 
 function check_brew() {
@@ -27,10 +27,6 @@ function check_brew() {
 
 # Check tool ( from mint - Support Apple Silicon )
 function check_required_tools() {
-  if [ ! -x "$(command -v swiftgen)" ]; then
-    sudo mint install SwiftGen/SwiftGen
-  fi
-
   if [ ! -x "$(command -v xcpretty)" ]; then
     gem install xcpretty
   fi

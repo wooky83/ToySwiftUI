@@ -4,12 +4,12 @@ readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-DEVELOPER_MODE=false
+CI_MODE=false
 
-while getopts afastm:h OPT; do
+while getopts am:h OPT; do
   case $OPT in
   a)
-    DEVELOPER_MODE=true
+    CI_MODE=true
     ;;
   m)
     echo "Message $OPTARG"    
@@ -21,16 +21,17 @@ while getopts afastm:h OPT; do
   esac
 done
 
-if ${DEVELOPER_MODE}; then
-    sh Scripts/download_tools.sh
-    sh Scripts/copy_githooks.sh
+if ${CI_MODE}; then
+  sh setup.sh
+else 
+  sh Scripts/copy_githooks.sh
 fi
 
 echo "${notice_color}[Generating projects]${no_color}"
 tuist fetch
 tuist generate --no-open
 
-if ! ${DEVELOPER_MODE}; then
+if ! ${CI_MODE}; then
     echo "${notice_color}[Open project]${no_color}"
     open ToySwiftUI.xcworkspace
 fi
