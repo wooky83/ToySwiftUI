@@ -18,19 +18,17 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:ToySwiftUI\/ToySwiftUI.xcodeproj",
-        "identifier" : "73B1278CE52DD5CC2C108ED4",
-        "name" : "ToySwiftUITests"
+        "identifier" : "9CF6C9D770B99521CBB89DC8",
+        "name" : "ToySwiftUITest"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Modules\/Features\/Home\/Home.xcodeproj",
-        "identifier" : "AF31213DA71B06E9B09EA3F0",
-        "name" : "HomeTests"
+        "identifier" : "C67FCC6781DBB00560C71F04",
+        "name" : "HomeTest"
       }
     }
   ],

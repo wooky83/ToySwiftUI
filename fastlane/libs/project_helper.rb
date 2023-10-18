@@ -8,4 +8,8 @@ module ProjectHelper
     return "#{gem_path}/lib/json_formatter.rb"
   end
 
+  def xcbeautify_formatter_path
+    return "swift run -c release --package-path tools-package xcbeautify"
+  end
+
 end

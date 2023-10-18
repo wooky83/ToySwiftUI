@@ -29,6 +29,8 @@ fi
 
 # Xcode Settings
 ./Scripts/xcode-test.sh
+# Build Tool Package
+# swift build --package-path tools-package 
 
 echo "${notice_color}[Generating projects]${no_color}"
 tuist fetch
