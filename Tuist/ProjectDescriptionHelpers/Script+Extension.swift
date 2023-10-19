@@ -17,13 +17,13 @@ public extension TargetScript {
         )
     }
 
-    static var swiftGen: Self {
-        .pre(
-            path: .relativeToScript("run_swiftgen.sh"),
-            name: "Run SwiftGen",
-            basedOnDependencyAnalysis: false
-        )
-    }
+//    static var swiftGen: Self {
+//        .pre(
+//            path: .relativeToScript("run_swiftgen.sh"),
+//            name: "Run SwiftGen",
+//            basedOnDependencyAnalysis: false
+//        )
+//    }
 
     static var crashlyticsRun: Self {
         .post(

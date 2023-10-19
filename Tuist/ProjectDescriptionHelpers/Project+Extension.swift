@@ -47,7 +47,8 @@ public extension Project {
         testSources: SourceFilesList? = nil,
         uiTestSources: SourceFilesList? = nil,
         scripts: [TargetScript] = [],
-        dependencies: [TargetDependency] = []
+        dependencies: [TargetDependency] = [],
+        resourcesSynthesizers: [ResourceSynthesizer] = []
     ) -> Project {
         makeProject(
             name: name,
@@ -65,7 +66,8 @@ public extension Project {
                 settings: .makeSettings()
             ),
             schemes: [],
-            additionalFiles: []
+            additionalFiles: [],
+            resourceSynthesizers: resourcesSynthesizers
         )
     }
 }
@@ -77,7 +79,8 @@ public extension Project {
         settings: Settings? = nil,
         targets: [Target] = [],
         schemes: [Scheme] = [],
-        additionalFiles: [FileElement] = []
+        additionalFiles: [FileElement] = [],
+        resourceSynthesizers: [ResourceSynthesizer] = []
     ) -> Project {
         Project(
             name: name,
@@ -92,7 +95,8 @@ public extension Project {
             settings: settings,
             targets: targets,
             schemes: schemes,
-            additionalFiles: additionalFiles
+            additionalFiles: additionalFiles,
+            resourceSynthesizers: resourceSynthesizers
         )
     }
 }

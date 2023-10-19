@@ -6,10 +6,10 @@ let project = Project.staticFramework(
     resources: [
         "Resources/**",
     ],
-    scripts: [
-        .swiftGen
-    ],
     dependencies: [
         Module.Subsystem.dependency,
+    ],
+    resourcesSynthesizers: [
+        .custom(name: "colors", parser: .assets, extensions: ["xcassets"])
     ]
 )

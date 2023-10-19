@@ -1,24 +1,32 @@
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
+{% if catalogs %}
+{% set colorType %}{{param.colorTypeName|default:"AssetColor"}}{% endset %}
+{% macro casesBlock assets %}
+    {% for asset in assets %}
+        case {{asset.value}}
+    {% endfor %}
+{% endmacro %}
+{% macro valuesBlock assets %}
+    {% for asset in assets %}
+        case .{{asset.value}}: return {{colorType}}(named: "{{asset.value}}")
+    {% endfor %}
+{% endmacro %}
 import UIKit
 
 // MARK: - UIColor
 
 public extension Style {
     enum Color {
-        case uniqueOrange
-        case uniquePink
-        case uniquePurple
+        {% call casesBlock catalogs.first.assets %}
     }
 }
 
 public extension Style.Color {
     var value: UIColor {
         switch self {
-        case .uniqueOrange: return AssetColor(named: "uniqueOrange")
-        case .uniquePink: return AssetColor(named: "uniquePink")
-        case .uniquePurple: return AssetColor(named: "uniquePurple")
+            {% call valuesBlock catalogs.first.assets %}
         }
     }
 }
@@ -28,7 +36,9 @@ extension Style.Color {
         guard let assetColor = UIColor(named: named, in: Bundle.module, compatibleWith: nil) else {
             return UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         }
+        
         return assetColor
     }
 }
+{% endif %}
 // swiftlint:enable all

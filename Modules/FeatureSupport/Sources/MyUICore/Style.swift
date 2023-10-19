@@ -1,6 +1,4 @@
 import Foundation
 import UIKit
 
-public enum Style {
-
-}
+public enum Style {}

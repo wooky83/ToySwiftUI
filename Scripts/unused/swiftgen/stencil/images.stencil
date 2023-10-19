@@ -1,0 +1,41 @@
+// swiftlint:disable all
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+
+{% if catalogs %}
+{% set enumName %}{{param.enumName|default:"BankImage"}}{% endset %}
+import UIKit
+
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+
+// MARK: - UIImage
+
+// swiftlint:disable identifier_name line_length number_separator type_body_length
+public enum {{enumName}}: String {
+{% for asset in catalogs.first.assets %}
+    case {{asset.name|swiftIdentifier:'pretty'|snakeToCamelCase|lowerFirstWord}} = "{{asset.name}}"
+{% endfor %}
+
+    public var name: String {
+        return self.rawValue
+    }
+
+    public var image: UIImage? { 
+        return BankImage.named(name)
+    }
+}
+// swiftlint:enable identifier_name line_length number_separator type_body_length
+
+private extension {{enumName}} {
+    static func named(
+        _ name: String,
+        in bundle: Bundle = .commonResourceBundle,
+        compatibleWith: UITraitCollection? = nil
+    ) -> UIImage? {
+        // swiftlint:disable disallowed_image_resouce_rule
+        UIImage(named: name, in: bundle, compatibleWith: compatibleWith)
+    }
+}
+{% else %}
+// No images found.
+{% endif %}

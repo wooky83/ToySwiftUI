@@ -30,6 +30,13 @@
         "identifier" : "C67FCC6781DBB00560C71F04",
         "name" : "HomeTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/FeatureSupport\/FeatureSupport.xcodeproj",
+        "identifier" : "6C74694624CD66990B6AE4F5",
+        "name" : "FeatureSupportTest"
+      }
     }
   ],
   "version" : 1
