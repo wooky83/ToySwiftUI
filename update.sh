@@ -23,7 +23,8 @@ done
 
 if ${CI_MODE}; then
   sh setup.sh
-else 
+  bundle check 1>/dev/null || bundle install
+else
   sh Scripts/copy_githooks.sh
 fi
 
