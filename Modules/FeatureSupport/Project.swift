@@ -10,6 +10,7 @@ let project = Project.staticFramework(
         Module.Subsystem.dependency,
     ],
     resourcesSynthesizers: [
-        .custom(name: "colors", parser: .assets, extensions: ["xcassets"])
+        .custom(name: "colors", parser: .assets, extensions: ["xcassets"]),
+        .custom(name: "images", parser: .assets, extensions: ["xcassets"]),
     ]
 )

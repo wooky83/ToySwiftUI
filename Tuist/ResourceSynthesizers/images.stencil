@@ -2,7 +2,7 @@
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 {% if catalogs %}
-{% set enumName %}{{param.enumName|default:"BankImage"}}{% endset %}
+{% set enumName %}{{param.enumName|default:"SWImage"}}{% endset %}
 import UIKit
 
 // swiftlint:disable superfluous_disable_command
@@ -11,8 +11,9 @@ import UIKit
 // MARK: - UIImage
 
 // swiftlint:disable identifier_name line_length number_separator type_body_length
+
 public enum {{enumName}}: String {
-{% for asset in catalogs.first.assets %}
+{% for asset in catalogs.last.assets %}
     case {{asset.name|swiftIdentifier:'pretty'|snakeToCamelCase|lowerFirstWord}} = "{{asset.name}}"
 {% endfor %}
 
@@ -21,7 +22,7 @@ public enum {{enumName}}: String {
     }
 
     public var image: UIImage? { 
-        return BankImage.named(name)
+        return SWImage.named(name)
     }
 }
 // swiftlint:enable identifier_name line_length number_separator type_body_length
@@ -29,7 +30,7 @@ public enum {{enumName}}: String {
 private extension {{enumName}} {
     static func named(
         _ name: String,
-        in bundle: Bundle = .commonResourceBundle,
+        in bundle: Bundle = Bundle.module,
         compatibleWith: UITraitCollection? = nil
     ) -> UIImage? {
         // swiftlint:disable disallowed_image_resouce_rule

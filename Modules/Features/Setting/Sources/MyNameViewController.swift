@@ -1,3 +1,4 @@
+import FeatureSupport
 import UIKit
 
 class MyNameViewController: UIViewController {
@@ -6,5 +7,5 @@ class MyNameViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .yellow
     }
-    
+
 }
