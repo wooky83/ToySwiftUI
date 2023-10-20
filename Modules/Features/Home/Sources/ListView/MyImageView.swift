@@ -8,8 +8,6 @@ struct MyImageView: View {
     }
 }
 
-struct MyImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyImageView(url: nil)
-    }
+#Preview {
+    MyImageView(url: nil)
 }

@@ -1,5 +1,5 @@
-import SwiftUI
 import FeatureSupport
+import SwiftUI
 
 struct MyGridView: View {
 
@@ -38,8 +38,6 @@ struct MyGridView: View {
     }
 }
 
-struct MyGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyGridView()
-    }
+#Preview {
+    MyGridView()
 }

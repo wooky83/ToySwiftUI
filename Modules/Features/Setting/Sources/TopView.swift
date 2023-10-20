@@ -9,8 +9,6 @@ public struct TopView: View {
     }
 }
 
-struct TopView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopView()
-    }
+#Preview {
+    TopView()
 }

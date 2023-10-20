@@ -49,4 +49,18 @@ final class FeatureSupportTests: XCTestCase {
             color2: UIColor(red: 0.565, green: 0.376, blue: 0.937, alpha: 1.0)
         )
     }
+
+    func testUserInfoActor() async throws {
+        let info = MyUserInfoActor()
+        let key = await info.publicKey
+        XCTAssertEqual(key, "rPsZsFxohw0qxju5MXvT9MV213hl2pKYTWNPQhOQDKb1CL/dSmqYmPEuKqiOD+xjntNc8w4/hARC4Xe5KkHpkQ==")
+    }
+
+    func testDoraemongImage() {
+        XCTAssertNotNil(SWImage.doraemong.image)
+    }
+
+    func testEmojiImage() {
+        XCTAssertNotNil(SWImage.emoji.image)
+    }
 }

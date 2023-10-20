@@ -33,8 +33,6 @@ struct MyListView: View {
     }
 }
 
-struct MyListView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyListView()
-    }
+#Preview {
+    MyListView()
 }
