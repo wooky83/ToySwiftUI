@@ -1,0 +1,41 @@
+// swiftlint:disable all
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
+
+{% if files %}
+{% set enumName %}{{param.enumName|default:"SWLottie"}}{% endset %}
+import Foundation
+import Lottie
+
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+
+// MARK: - Lottie Animations
+
+// swiftlint:disable identifier_name line_length number_separator type_body_length
+public enum {{enumName}}: String {
+{% for file in files %}
+    case {{file.name|swiftIdentifier:'pretty'|snakeToCamelCase|lowerFirstWord}} = "{{file.name}}"
+{% endfor %}
+
+    public var name: String { 
+        return self.rawValue
+    }
+
+    public var animation: LottieAnimation? { 
+        return {{enumName}}.named(rawValue)
+    }
+
+    public static func named(_ name: String) -> LottieAnimation? {
+        guard let animation = LottieAnimation.named(name, bundle: Bundle.module) else {
+            return nil
+        }
+
+        return animation
+    }
+}
+// swiftlint:enable identifier_name line_length number_separator type_body_length
+
+{% else %}
+// No files found
+{% endif %}
+

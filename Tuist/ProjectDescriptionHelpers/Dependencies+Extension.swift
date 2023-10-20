@@ -26,6 +26,11 @@ public extension Package {
         requirement: .upToNextMajor(from: "5.6.0")
     )
 
+    static let Lottie = Package.remote(
+        url: "https://github.com/airbnb/lottie-spm.git",
+        requirement: .upToNextMajor(from: "4.3.3")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -42,5 +47,6 @@ public extension Dependency.MyPackage {
     static let RxSwift: Dependency = .package(product: "RxSwift")
     static let RxCocoa: Dependency = .package(product: "RxCocoa")
     static let SanpKit: Dependency = .package(product: "SnapKit")
+    static let Lottie: Dependency = .package(product: "Lottie")
 }
 

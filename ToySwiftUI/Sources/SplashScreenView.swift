@@ -1,3 +1,4 @@
+import FeatureSupport
 import SwiftUI
 
 struct SplashScreenView: View {
@@ -12,10 +13,11 @@ struct SplashScreenView: View {
         } else {
             VStack {
                 VStack {
-                    Image(systemName: "swift")
-                        .font(.system(size: 80))
-                        .foregroundColor(.red)
-                        .padding(.bottom, 20)
+                    LottieView(
+                        name: SWLottie.halloween1,
+                        loopMode: .loop
+                    )
+                    .frame(width: 200, height: 200)
                     Text("SwiftUI Toy Project!!")
                         .font(.system(size: 26))
                         .foregroundColor(.black.opacity(0.8))
@@ -30,7 +32,7 @@ struct SplashScreenView: View {
                 }
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                     withAnimation {
                         self.isActive = true
                     }
