@@ -4,9 +4,13 @@ import ProjectDescriptionHelpers
 let project = Project.staticFramework(
     name: "Util",
     packages: [
-        .SWUtil
+        .SWUtil,
+        .Algorithms,
+        .Collections
     ],
     dependencies: [
-        Dependency.MyPackage.SWUtil
+        Dependency.MyPackage.SWUtil,
+        Dependency.MyPackage.Algorithms,
+        Dependency.MyPackage.Collections
     ]
 )

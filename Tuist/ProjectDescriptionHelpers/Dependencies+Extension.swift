@@ -31,6 +31,16 @@ public extension Package {
         requirement: .upToNextMajor(from: "4.3.3")
     )
 
+    static let Algorithms = Package.remote(
+        url: "https://github.com/apple/swift-algorithms",
+        requirement: .upToNextMajor(from: "1.1.0")
+    )
+
+    static let Collections = Package.remote(
+        url: "https://github.com/apple/swift-collections.git",
+        requirement: .upToNextMajor(from: "1.0.5")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -48,5 +58,7 @@ public extension Dependency.MyPackage {
     static let RxCocoa: Dependency = .package(product: "RxCocoa")
     static let SanpKit: Dependency = .package(product: "SnapKit")
     static let Lottie: Dependency = .package(product: "Lottie")
+    static let Algorithms: Dependency = .package(product: "Algorithms")
+    static let Collections: Dependency = .package(product: "Collections")
 }
 

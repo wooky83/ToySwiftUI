@@ -37,6 +37,13 @@
         "identifier" : "6C74694624CD66990B6AE4F5",
         "name" : "FeatureSupportTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Util\/Util.xcodeproj",
+        "identifier" : "1D67C05B7B07F16ACAEF42BF",
+        "name" : "UtilTest"
+      }
     }
   ],
   "version" : 1
