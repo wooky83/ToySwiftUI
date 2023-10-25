@@ -29,7 +29,7 @@ struct ActorView: View {
                     .foregroundColor(viewModel.isCharging ? .red : .none)
             }
             Spacer().frame(height: 100)
-            VStack {
+            HStack {
                 Button {
                     Task {
                         truck.isCharging = true
@@ -38,10 +38,17 @@ struct ActorView: View {
                         truck.isCharging = false
                     }
                 } label: {
-                    Label(truck.description, systemImage: "box.truck")
-                        .frame(width: 300, height: 100)
-                        .foregroundColor(.blue)
+                    VStack {
+                        Image(systemName: "box.truck")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text(truck.description)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.blue)
+                    .frame(width: 100, height: 150)
                 }
+                Spacer().frame(width: 30)
                 Button {
                     Task {
                         car.isCharging = true
@@ -50,10 +57,17 @@ struct ActorView: View {
                         car.isCharging = false
                     }
                 } label: {
-                    Label(car.description, systemImage: "car.rear")
-                        .frame(width: 300, height: 100)
-                        .foregroundColor(.yellow)
+                    VStack {
+                        Image(systemName: "car.rear")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text(car.description)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.yellow)
+                    .frame(width: 100, height: 150)
                 }
+                Spacer().frame(width: 30)
                 Button {
                     Task {
                         bus.isCharging = true
@@ -62,9 +76,15 @@ struct ActorView: View {
                         bus.isCharging = false
                     }
                 } label: {
-                    Label(bus.description, systemImage: "bus.fill")
-                        .frame(width: 300, height: 100)
-                        .foregroundColor(.green)
+                    VStack {
+                        Image(systemName: "bus.fill")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text(bus.description)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.green)
+                    .frame(width: 100, height: 150)
                 }
             }
         }

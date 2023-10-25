@@ -21,6 +21,8 @@ struct SplashScreenView: View {
                     Text("SwiftUI Toy Project!!")
                         .font(.system(size: 26))
                         .foregroundColor(.black.opacity(0.8))
+                    Spacer()
+                        .frame(height: 200)
                 }
                 .scaleEffect(size)
                 .opacity(opacity)

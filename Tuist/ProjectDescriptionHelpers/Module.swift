@@ -55,8 +55,8 @@ public extension Module {
         name: "Setting",
         type: .feature
     )
-    static let Weather: Module = .init(
-        name: "Weather",
+    static let Architecture: Module = .init(
+        name: "Architecture",
         type: .feature
     )
     static let FeatureSupport: Module = .init(
@@ -76,7 +76,7 @@ public extension Module {
         [
             .Home,
             .Concurrency,
-            .Weather,
+            .Architecture,
             .Setting,
         ]
     }

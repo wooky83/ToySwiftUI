@@ -1,8 +1,8 @@
+import Architecture
 import Concurrency
 import Home
 import Setting
 import SwiftUI
-import Weather
 
 public struct MainView: View {
 
@@ -12,9 +12,9 @@ public struct MainView: View {
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-            Weather.TopView()
+            Architecture.TopView()
                 .tabItem {
-                    Label("Weather", systemImage: "sun.max.fill")
+                    Label("Architecture", systemImage: "tent.2.fill")
                 }
             Concurrency.TopView()
                 .tabItem {

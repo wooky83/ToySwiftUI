@@ -1,6 +1,6 @@
 import Foundation
-import XCTest
 @testable import Subsystem
+import XCTest
 
 final class SubsystemTests: XCTestCase {
 
