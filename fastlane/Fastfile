@@ -11,6 +11,7 @@ before_all do
   repository_root = File.expand_path(File.join(__dir__, '../'))
   ENV['FL_ROOT'] = repository_root
   ENV['OUTPUT_DIR'] = File.join(repository_root, 'build', 'output')
+  ENV['XCPRETTY_JSON_FILE_OUTPUT'] = File.join(test_reports_path, "errors.json")
   UI.message("Repository_root is #{repository_root}.")
 end
 
@@ -51,7 +52,7 @@ lane :beta do
     configuration: "Debug",
     destination: "generic/platform=iOS Simulator",
     xcargs: "EXCLUDED_ARCHS=arm64",
-    xcpretty_formatter: xcpretty_formatter_path,
+    xcodebuild_formatter: xcbeautify_formatter_path,
     derived_data_path: derived_data_path,
     skip_package_ipa: true,
     skip_archive: true,
@@ -66,7 +67,7 @@ lane :alpha do
     configuration: "Alpha",
     destination: "generic/platform=iOS Simulator",
     xcargs: "EXCLUDED_ARCHS=arm64",
-    xcpretty_formatter: xcpretty_formatter_path,
+    xcodebuild_formatter: xcbeautify_formatter_path,
     derived_data_path: derived_data_path,
     skip_package_ipa: true,
     skip_archive: true,
@@ -83,4 +84,22 @@ end
 desc "Build Debug"
 lane :release do
   UI.success("build release😁")
+end
+
+after_all do |lane|
+  create_artifact_xcpretty
+end
+
+error do |lane, exception|
+  create_artifact_xcpretty
+end
+
+def create_artifact_xcpretty
+  log_file = Dir.glob("#{test_reports_path}/*.log").find { true }
+  sh("cat '#{log_file}' | \
+  xcpretty -f #{xcpretty_formatter_path} \
+  --report html --output #{File.join(test_reports_path, "report.html")} \
+  --report junit --output #{File.join(test_reports_path, "report.junit")} \
+  >>/dev/null 2>&1",
+  log: false) if log_file
 end

@@ -53,7 +53,7 @@ if [ "$SELECTED_XCODES_VERSION" = "$REQUIRED_XCODES_VERSION" ]; then
 fi
 
 echo "The selected version of Xcode does not match the project configuration:"
-echo "  - Selected: ${SELECTED_XCODES_VERSION} - ${SELECTED_BUILD}"
+echo "  - Selected: ${SELECTED_XCODES_VERSION}"
 echo "  - Required: ${REQUIRED_XCODES_VERSION}"
 
 xcodes select ${REQUIRED_XCODES_VERSION}
@@ -65,8 +65,6 @@ if [ $? != 0 ]; then
     echo "1. Please install Xcode ${REQUIRED_VERSION} from https://developer.apple.com/download"
     echo "2. Execute 'xcodes select ${REQUIRED_VERSION}' to switch Xcode"
     echo "Pass the --skip-xcode-test option if you're sure you want to use a different version."
-    echo "   $ ./update.sh --skip-xcode-test"
-    echo "If you want to permanently bypass this check, set SKIP_XCODE_TEST=true in your environment variables."
     exit 1
 fi
 
