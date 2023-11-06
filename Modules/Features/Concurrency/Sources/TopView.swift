@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct TopView: View {
-    @State private var concurrencis = ["Actor", "Combine", "Async/Await", "DispatchQueue"]
+    @State private var concurrencis = ["Actor", "Queue", "Combine", "Async/Await"]
 
     public init() { }
     public var body: some View {
@@ -10,8 +10,10 @@ public struct TopView: View {
                 ForEach(concurrencis, id: \.self) { item in
                     NavigationLink {
                         switch item {
-                        case "Actor":
+                        case concurrencis[0]:
                             ActorView()
+                        case concurrencis[1]:
+                            QueueView()
                         default:
                             ActorView()
                         }
