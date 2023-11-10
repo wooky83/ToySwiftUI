@@ -1,4 +1,5 @@
 import FeatureSupport
+import Subsystem
 import SwiftUI
 #if Alpha || Release
 import Firebase
@@ -12,6 +13,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         #endif
         print("Welcome to ToyProject!")
+        _ = MockNetwork.shared
         return true
     }
 }

@@ -1,12 +1,16 @@
 import Foundation
+import SWMacro
 
-struct PhotoModel: Codable {
-    struct Item: Codable {
+@Codable
+struct PhotoModel {
+    @Codable
+    struct Item {
         struct Media: Codable {
             let m: String
         }
         let media: Media
-        let title: String
+        @CodingKey(key: "title")
+        let mainTitle: String
         let description: String
     }
     let items: [Item]

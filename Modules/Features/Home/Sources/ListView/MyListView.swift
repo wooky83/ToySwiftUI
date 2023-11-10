@@ -6,7 +6,7 @@ struct MyListView: View {
 
     var body: some View {
         List {
-            ForEach(viewModel.items, id: \.title) { model in
+            ForEach(viewModel.items, id: \.mainTitle) { model in
                 NavigationLink {
                     MyImageView(url: URL(string: model.media.m))
                 } label: {
@@ -20,7 +20,7 @@ struct MyListView: View {
                             ProgressView()
                         }
                         .padding(.trailing, 10)
-                        Text(model.title)
+                        Text(model.mainTitle)
                     }
                 }
             }

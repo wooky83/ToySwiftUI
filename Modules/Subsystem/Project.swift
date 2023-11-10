@@ -4,10 +4,12 @@ import ProjectDescriptionHelpers
 let project = Project.staticFramework(
     name: "Subsystem",
     packages: [
-        .NetworkModule
+        .NetworkModule,
+        .SWMacro
     ],
     dependencies: [
         Module.Util.dependency,
-        Dependency.MyPackage.NetworkModule
+        Dependency.MyPackage.CombineNetworkKit,
+        Dependency.MyPackage.SWMacro
     ]
 )

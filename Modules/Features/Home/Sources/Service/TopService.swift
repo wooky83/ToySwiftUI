@@ -1,6 +1,6 @@
 import Combine
+import CombineNetworkKit
 import Foundation
-import URLSessionNetwork
 
 struct TopService {
     public static func feedPhotos(_ tag: String? = nil) -> AnyPublisher<PhotoModel, Error> {

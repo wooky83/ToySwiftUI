@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct TopView: View {
-    @State private var concurrencis = ["Actor", "Queue", "Combine", "Async/Await"]
+    @State private var concurrencis = ["Actor", "Queue", "Task", "Combine", "Async/Await"]
 
     public init() { }
     public var body: some View {
@@ -14,6 +14,8 @@ public struct TopView: View {
                             ActorView()
                         case concurrencis[1]:
                             QueueView()
+                        case concurrencis[2]:
+                            TaskView()
                         default:
                             ActorView()
                         }

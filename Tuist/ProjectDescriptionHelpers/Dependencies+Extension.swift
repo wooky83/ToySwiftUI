@@ -41,6 +41,11 @@ public extension Package {
         requirement: .upToNextMajor(from: "1.0.5")
     )
 
+    static let SWMacro = Package.remote(
+        url: "https://github.com/wooky83/SWMacro",
+        requirement: .branch("main")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -52,7 +57,7 @@ public extension Dependency {
 
 public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
-    static let NetworkModule: Dependency = .package(product: "URLSessionNetwork")
+    static let CombineNetworkKit: Dependency = .package(product: "CombineNetworkKit")
     static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
     static let RxSwift: Dependency = .package(product: "RxSwift")
     static let RxCocoa: Dependency = .package(product: "RxCocoa")
@@ -60,5 +65,6 @@ public extension Dependency.MyPackage {
     static let Lottie: Dependency = .package(product: "Lottie")
     static let Algorithms: Dependency = .package(product: "Algorithms")
     static let Collections: Dependency = .package(product: "Collections")
+    static let SWMacro: Dependency = .package(product: "SWMacro")
 }
 

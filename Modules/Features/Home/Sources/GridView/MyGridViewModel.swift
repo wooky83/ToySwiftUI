@@ -1,5 +1,5 @@
-import Foundation
 import Combine
+import Foundation
 import SWUtil
 
 class MyGridViewModel: ObservableObject {
@@ -8,6 +8,7 @@ class MyGridViewModel: ObservableObject {
 
     func fetchPhotos() {
         TopService.feedPhotos()
+            .print()
             .ignoreFailure()
             .mainThread()
             .sink(receiveValue: { [weak self] photoModel in
