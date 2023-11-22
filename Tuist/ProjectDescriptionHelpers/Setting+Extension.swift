@@ -44,7 +44,8 @@ public extension SettingsDictionary {
                 return .debug(
                     name: name,
                     settings: .init()
-                        .otherSwiftFlags("$(inherited) -DDEBUG")
+                        .swiftActiveCompilationConditions("DEBUG")
+                        .otherSwiftFlags("$(inherited)")
                         .debugInformationFormat(DebugInformationFormat.dwarf)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui"])
                 )
@@ -52,7 +53,7 @@ public extension SettingsDictionary {
                 return .debug(
                     name: name,
                     settings: .init()
-                        .otherSwiftFlags("$(inherited) -DALPHA")
+                        .swiftActiveCompilationConditions("ALPHA")
                         .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui.alpha"])
                 )
@@ -60,7 +61,7 @@ public extension SettingsDictionary {
                 return .debug(
                     name: name,
                     settings: .init()
-                        .otherSwiftFlags("$(inherited) -DRELEASE")
+                        .swiftActiveCompilationConditions("RELEASE")
                         .debugInformationFormat(DebugInformationFormat.dwarfWithDsym)
                         .merging(["PRODUCT_BUNDLE_IDENTIFIER": "com.wooky.toyswiftui.release"])
                 )
