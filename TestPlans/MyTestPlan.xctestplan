@@ -44,6 +44,13 @@
         "identifier" : "1D67C05B7B07F16ACAEF42BF",
         "name" : "UtilTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Subsystem\/Subsystem.xcodeproj",
+        "identifier" : "0E901865FD35B2602984CA4B",
+        "name" : "SubsystemTest"
+      }
     }
   ],
   "version" : 1

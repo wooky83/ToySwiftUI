@@ -13,7 +13,7 @@ public actor MyUserInfoActor {
         let url = URL(fileURLWithPath: bundlePath)
         guard let data = try? Data(contentsOf: url) else { return "" }
         guard let myInfoModel = try? JSONDecoder().decode(MyInfoModel.self, from: data) else { return "" }
-        return myInfoModel.publicKey.sw.base64Decoded
+        return myInfoModel.publicKey.base64Decoded
     }
 }
 

@@ -3,6 +3,7 @@ import SwiftUI
 struct TaskView: View {
 
     @StateObject private var viewModel = TaskViewModel()
+    @State private var result = ""
 
     var body: some View {
         LazyVStack {
@@ -18,9 +19,15 @@ struct TaskView: View {
                 .background(Circle().fill(.orange))
                 .frame(width: 150, height: 150)
 
-            Button("Test") {
-                viewModel.test()
+            Button("Test TaskGroup") {
+                Task {
+                    if let taskResult = try? await viewModel.taskGroup() {
+                        result = taskResult
+                    }
+                }
             }
+
+            Text("Task Group Result is : \(result)")
         }
     }
 }

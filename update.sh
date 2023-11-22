@@ -33,6 +33,8 @@ fi
 # Build Tool Package
 # swift build --package-path tools-package 
 
+defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
+
 echo "${notice_color}[Generating projects]${no_color}"
 tuist fetch
 tuist generate --no-open

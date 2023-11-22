@@ -1,35 +1,43 @@
 import Foundation
 import Swifter
 import SWMacro
+import SWUtil
 
-//@SingleTon
+@SingleTon
 public class MockNetwork {
-    public static let shared = MockNetwork()
 
     private var server = HttpServer()
 
     init() {
+        Log.network("MockNetwork init !!")
         startServer()
     }
 
-    func startServer() {
+    private func startServer() {
         do {
             try server.start(1234)
             configureServer()
-            print("Server Status : \(server.state)")
+            Log.network("Server Status : \(server.state)")
         } catch {
-            print("Server Start Error : \(error)")
+            Log.network("Server Start Error : \(error)")
         }
     }
 
     private func configureServer() {
         server["/api/:path"] = { request in
-            print("Whynot \(request.path), \(request.headers)")
-            return HttpResponse.ok(.text(
-                """
-                { "text": "\(request.path.components(separatedBy: "/").last ?? "")" }
-                """
+            HttpResponse.ok(.text(request.path.components(separatedBy: "/").last ?? ""))
+        }
+        server["/hello"] = { _ in
+            HttpResponse.ok(.text("world"))
+        }
+        server["/json/:path"] = { request in
+            .ok(.json(
+                ["text": request.path.components(separatedBy: "/").last ?? ""]
             ))
         }
+    }
+
+    public func stopServer() {
+        server.stop()
     }
 }
