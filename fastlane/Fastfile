@@ -33,7 +33,7 @@ lane :test do
     scheme: "ToySwiftUI",
     configuration: "Debug",
     device: "iPhone 14 Pro",
-    xcodebuild_formatter: xcbeautify_formatter_path,
+    xcodebuild_formatter: "#{xcbeautify_formatter_path} --report junit --report-path #{test_reports_path} --junit-report-filename xcbeautify.junit",
     testplan: "MyTestPlan",
     code_coverage: true,
     result_bundle: true,
@@ -43,6 +43,7 @@ lane :test do
     reset_simulator: true,
     testplan: "MyTestPlan"
   )
+  create_xcpretty_log
   UI.success("test debug😁")
 end
 
@@ -88,14 +89,14 @@ lane :release do
 end
 
 after_all do |lane|
-  create_artifact_xcpretty
+  
 end
 
 error do |lane, exception|
-  create_artifact_xcpretty
+  
 end
 
-def create_artifact_xcpretty
+private_lane :create_xcpretty_log do
   log_file = Dir.glob("#{test_reports_path}/*.log").find { true }
   sh("cat '#{log_file}' | \
   xcpretty -f #{xcpretty_formatter_path} \
