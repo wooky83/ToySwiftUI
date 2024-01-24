@@ -1,0 +1,56 @@
+name: SHELLCHECK
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check modified shell scripts
+        id: check_sh
+        run: |
+          git fetch origin ${{ github.head_ref }}
+          git fetch origin ${{ github.base_ref }}
+          FILES=$(git diff --name-only origin/${{ github.base_ref }}..origin/${{ github.head_ref }})
+          echo "Modified files: $FILES"
+          SH_MODIFIED=""
+          for FILE in $FILES; do
+            if [[ "$FILE" == *.sh ]]; then
+              echo "Shell script modified: $FILE"
+              SH_MODIFIED="$SH_MODIFIED $FILE"
+            fi
+          done
+          echo "::set-output name=sh_modified::$SH_MODIFIED"
+
+      - name: Run if shell script modified
+        id: shellcheck
+        if: steps.check_sh.outputs.sh_modified != ''
+        run: |
+          echo "Modified shell scripts: ${{ steps.check_sh.outputs.sh_modified }}"
+          sudo apt install shellcheck
+          shellcheck --severity=error ${{ steps.check_sh.outputs.sh_modified }} > shellcheck_output.txt || echo "::set-output name=shellcheck_exit_code::$?"
+        shell: bash
+      
+      - name: Comment PR if shellcheck failed
+        uses: actions/github-script@v7
+        if: steps.shellcheck.outputs.shellcheck_exit_code != '0'
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('shellcheck_output.txt', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Shellcheck fail output:\n```\n" + output + "\n```"
+            });
+            if (output) {
+              core.setFailed("Shellcheck found issues");
+            }
+

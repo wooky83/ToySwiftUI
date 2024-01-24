@@ -102,5 +102,6 @@ Tuist/Dependencies
 /.idea
 
 #github
-.github/
 swift.yml
+
+vendor/

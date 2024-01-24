@@ -1,0 +1,41 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: Main Merged Build
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Main Build
+    uses: ./.github/workflows/workflow.yml
+
+  merged_jira:
+    name: Merge Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+      - name: Extract Jira issue from commit message
+        id: jira
+        run: |
+          ISSUE_KEY=$(echo '${{ github.event.head_commit.message }}' | grep -o '\[\s*\S*\s*\]')
+          ISSUE_KEY=$(echo $ISSUE_KEY | sed 's/ //g')  # Remove spaces
+          ISSUE_KEY=$(echo $ISSUE_KEY | sed 's/\[//g' | sed 's/\]//g')  # Remove brackets
+          echo "issue_key=$ISSUE_KEY" >> "$GITHUB_OUTPUT"
+        
+      - name: Transition issue
+        if: steps.jira.outputs.issue_key != ''
+        id: transition
+        uses: atlassian/gajira-transition@v3
+        with:
+          issue: ${{ steps.jira.outputs.issue_key }}
+          transitionId: 41
