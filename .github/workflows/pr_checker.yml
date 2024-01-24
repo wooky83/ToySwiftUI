@@ -40,18 +40,14 @@ jobs:
 
       - name: Danger PreBuild
         run: |
-          ls
-          pushd ci-script
-          ls
-          popd
-          bundle exec danger --dangerfile=ci-script/Dangerfile --danger_id=prebuild --remove-previous-comments
+          bundle exec danger --dangerfile=ci-script/danger/Dangerfile --danger_id=prebuild --remove-previous-comments
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: make test
 
       - name: Danger Postbuild
-        run: bundle exec danger --dangerfile=ci-script/Dangerfile.postbuild --danger_id=postbuild 
+        run: bundle exec danger --dangerfile=ci-script/danger/Dangerfile.postbuild --danger_id=postbuild 
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
