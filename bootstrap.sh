@@ -8,6 +8,6 @@ if [ -e "Gemfile" ]; then
   bundle config set deployment 'true'
   bundle config path vendor/bundle
   platform=$(ruby -r rbconfig -e "puts RbConfig::CONFIG['host_cpu'] + '-' + RbConfig::CONFIG['host_os']")
-  bundle lock --add-platform $platform
+  bundle lock --add-platform "$platform"
   bundle install || echo "failed to install bundle"
 fi
