@@ -29,7 +29,7 @@ jobs:
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '15.1'
+          xcode-version: '15.2'
 
       - name: skipMacroValidation
         run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
@@ -95,4 +95,3 @@ jobs:
           # { id: 31, name: 검토중 } transitions issue to '검토 중' status.
           # { id: 41, name: 완료 } transitions issue to '완료됨' status.
 
-          
