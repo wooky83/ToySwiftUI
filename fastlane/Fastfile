@@ -38,7 +38,7 @@ lane :test do
     code_coverage: true,
     result_bundle_path: "#{test_reports_path}/result.xcresult",
     result_bundle: true,
-    derived_data_path: ,
+    derived_data_path: derived_data_path,
     output_directory: test_reports_path,
     buildlog_path: test_reports_path,
     reset_simulator: true,
