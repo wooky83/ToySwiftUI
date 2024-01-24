@@ -35,6 +35,9 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: ci-script
 
+      - name: Install dependencies
+        run: sh ./Scripts/bootstrap.sh
+
       - name: Danger PreBuild
         run: bundle exec danger --dangerfile=ci-script/Dangerfile --danger_id=prebuild --remove-previous-comments
         env:

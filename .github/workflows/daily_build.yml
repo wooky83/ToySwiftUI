@@ -8,6 +8,6 @@ on:
     - cron: '0 1 * * *'
 
 jobs:
-  build:
+  daily_build:
     name: Daily Build and Test
     uses: ./.github/workflows/workflow.yml
