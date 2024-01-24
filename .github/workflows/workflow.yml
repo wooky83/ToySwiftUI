@@ -21,25 +21,10 @@ jobs:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
           restore-keys: ${{ runner.os }}-gems-
-      
-      - name: Install dependencies
-        run: sh ./bootstrap.sh
 
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '15.1'
-        
-      - name: skipMacroValidation
-        run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
-        
-      - name: Install Tuist
-        run: |
-          if ! brew list tuist &>/dev/null; then
-            echo "Installing Tuist..."
-            brew install tuist
-          else
-            echo "Tuist is already installed."
-          fi
       
       - run: make test

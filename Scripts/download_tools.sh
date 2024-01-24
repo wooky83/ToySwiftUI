@@ -37,6 +37,7 @@ function check_required_tools() {
 }
 
 echo "${notice_color}[Check and download tools.]${no_color}"
+./bootstrap.sh
 check_brew
 check_required_tools
 echo "Need tool installed done"
