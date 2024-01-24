@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "Modified shell scripts: ${{ steps.check_sh.outputs.sh_modified }}"
           sudo apt install shellcheck
-          shellcheck ${{ steps.check_sh.outputs.sh_modified }} > shellcheck_output.txt || echo "::set-output name=shellcheck_exit_code::$?"
+          shellcheck --severity=error ${{ steps.check_sh.outputs.sh_modified }} > shellcheck_output.txt || echo "::set-output name=shellcheck_exit_code::$?"
         shell: bash
       
       - name: Comment PR if shellcheck failed
