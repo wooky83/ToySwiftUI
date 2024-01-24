@@ -14,6 +14,10 @@ disabled_rules:
 - nesting
 - function_parameter_count
 - comment_spacing
+- control_statement
+- operator_whitespace
+- vertical_whitespace
+- vertical_parameter_alignment
 
 included:
 excluded:
