@@ -94,3 +94,5 @@ jobs:
           # { id: 21, name: 진행 중 } transitions issue to '진행 중' status.
           # { id: 31, name: 검토중 } transitions issue to '검토 중' status.
           # { id: 41, name: 완료 } transitions issue to '완료됨' status.
+
+          
