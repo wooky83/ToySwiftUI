@@ -39,7 +39,12 @@ jobs:
         run: sh ./Scripts/bootstrap.sh
 
       - name: Danger PreBuild
-        run: bundle exec danger --dangerfile=ci-script/Dangerfile --danger_id=prebuild --remove-previous-comments
+        run: |
+          ls
+          pushd ci-script
+          ls
+          popd
+          bundle exec danger --dangerfile=ci-script/Dangerfile --danger_id=prebuild --remove-previous-comments
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
