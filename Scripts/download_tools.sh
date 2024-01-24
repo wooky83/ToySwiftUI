@@ -16,7 +16,7 @@ function check_brew() {
   brew update
 
   echo "Check installed of need tools..."
-  for needTool in ${NEED_TOOL_LIST[@]}; do
+  for needTool in "${NEED_TOOL_LIST[@]}"; do
     if [ ! -x "$(command -v ${needTool})" ]; then
       brew install ${needTool}
     else
@@ -37,7 +37,7 @@ function check_required_tools() {
 }
 
 echo "${notice_color}[Check and download tools.]${no_color}"
-./bootstrap.sh
+./Scripts/bootstrap.sh
 check_brew
 check_required_tools
 echo "Need tool installed done"

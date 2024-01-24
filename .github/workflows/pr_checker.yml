@@ -50,32 +50,32 @@ jobs:
       #   env:
       #     DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # jira_commit:
+  jira_commit:
 
-  #   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
       
-  #   steps:
-  #     - name: Login
-  #       uses: atlassian/gajira-login@master
-  #       env:
-  #         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-  #         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-  #         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    steps:
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
       
-  #     # https://github.com/atlassian/gajira-find-issue-key
-  #     - name: Find in commit messages
-  #       id: jira
-  #       uses: atlassian/gajira-find-issue-key@v3
-  #       with:
-  #         string: ${{ github.event.pull_request.title }}
+      # https://github.com/atlassian/gajira-find-issue-key
+      - name: Find in commit messages
+        id: jira
+        uses: atlassian/gajira-find-issue-key@v3
+        with:
+          string: ${{ github.event.pull_request.title }}
                 
-  #     - name: Transition issue
-  #       if: steps.jira.outputs.issue != ''
-  #       id: transition
-  #       uses: atlassian/gajira-transition@v3
-  #       with:
-  #         issue: ${{ steps.jira.outputs.issue }}
-  #         transitionId: 31
+      - name: Transition issue
+        if: steps.jira.outputs.issue != ''
+        id: transition
+        uses: atlassian/gajira-transition@v3
+        with:
+          issue: ${{ steps.jira.outputs.issue }}
+          transitionId: 31
               
           # { id: 11, name: 할 일 } transitions issue to '해야 할 일' status.
           # { id: 21, name: 진행 중 } transitions issue to '진행 중' status.
