@@ -1,8 +1,0 @@
-input_dir: ../../Modules/FeatureSupport/Resources
-output_dir: ../../Modules/FeatureSupport/Sources
-
-xcassets:
-  - inputs: Colors.xcassets
-    outputs:
-      templatePath: ./stencil/colors.stencil
-      output: MyUICore/Style/Style+Colors.swift
