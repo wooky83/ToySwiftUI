@@ -103,3 +103,5 @@ Tuist/Dependencies
 
 #github
 swift.yml
+
+vendor/
