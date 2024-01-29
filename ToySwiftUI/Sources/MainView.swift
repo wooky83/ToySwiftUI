@@ -1,7 +1,7 @@
-import Architecture
 import Concurrency
 import Home
 import Setting
+import Study
 import SwiftUI
 
 public struct MainView: View {
@@ -12,9 +12,9 @@ public struct MainView: View {
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-            Architecture.TopView()
+            Study.TopView()
                 .tabItem {
-                    Label("Architecture", systemImage: "tent.2.fill")
+                    Label("Study", systemImage: "tent.2.fill")
                 }
             Concurrency.TopView()
                 .tabItem {

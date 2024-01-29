@@ -51,6 +51,27 @@
         "identifier" : "0E901865FD35B2602984CA4B",
         "name" : "SubsystemTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Features\/Concurrency\/Concurrency.xcodeproj",
+        "identifier" : "8A79E36B943A91AA5EA43785",
+        "name" : "ConcurrencyTest"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Features\/Study\/Study.xcodeproj",
+        "identifier" : "29CF2AA26B051124E43F0449",
+        "name" : "StudyTest"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Features\/Setting\/Setting.xcodeproj",
+        "identifier" : "00B4C9F1DC4601AD68909C4F",
+        "name" : "SettingTest"
+      }
     }
   ],
   "version" : 1
