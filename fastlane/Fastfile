@@ -26,7 +26,7 @@ end
 # | release      | release                  | ToySwiftUI               |
 ########################################################################
 
-desc "Build Debug"
+desc "Debug Build "
 lane :test do
   run_tests(
     workspace: "ToySwiftUI.xcworkspace",
@@ -48,7 +48,7 @@ lane :test do
   UI.success("test debug😁")
 end
 
-desc "Build Debug"
+desc "Beta Build"
 lane :beta do
   build_ios_app(
     scheme: "ToySwiftUI",
@@ -60,10 +60,17 @@ lane :beta do
     skip_package_ipa: true,
     skip_archive: true,
   )
+
+  sentry_upload_dsym(
+    auth_token: "sentry_auth_token",
+    org_slug: "wooky83",
+    project_slug: "apple-ios",
+    dsym_path: lane_context[SharedValues::DSYM_OUTPUT_PATH],
+  )
   UI.success("build debug😁")
 end
 
-desc "Build Alpha"
+desc "Alpha Build"
 lane :alpha do
   build_ios_app(
     scheme: "ToySwiftUI",

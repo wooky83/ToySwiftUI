@@ -105,3 +105,6 @@ Tuist/Dependencies
 swift.yml
 
 vendor/
+
+# Sentry-cli
+sentry-cli

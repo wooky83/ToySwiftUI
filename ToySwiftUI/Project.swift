@@ -4,7 +4,7 @@ import ProjectDescriptionHelpers
 let project = Project.makeProject(
     name: "ToySwiftUI",
     packages: [
-        .FirebaseCrashlytics
+        .Sentry
     ],
     settings: Settings.makeSettings(),
     targets: Project.createTargets(
@@ -22,10 +22,10 @@ let project = Project.makeProject(
         ],
         scripts: [
             .swiftLint,
-            .crashlyticsRun,
+            .sentryRun,
         ],
         dependencies: [
-            Dependency.MyPackage.FirebaseCrashlytics,
+            Dependency.MyPackage.Sentry,
         ] + Module.features.map(\.dependency),
         settings: Settings.makeSettings()
     )

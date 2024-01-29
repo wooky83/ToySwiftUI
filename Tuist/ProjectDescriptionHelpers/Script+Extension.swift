@@ -25,26 +25,39 @@ public extension TargetScript {
 //        )
 //    }
 
-    static var crashlyticsRun: Self {
+//    static var crashlyticsRun: Self {
+//        .post(
+//            script: """
+//            #!/bin/sh
+//            googleServiceInfo = ""
+//            if [ "${CONFIGURATION}" = "Alpha" ]; then
+//                googleServiceInfo="Alpha"
+//            elif [ "${CONFIGURATION}" = "Release" ]; then
+//                googleServiceInfo="Release"
+//            fi
+//
+//            if [ "${CONFIGURATION}" = "Alpha" ] || [ "${CONFIGURATION}" = "Release" ]; then
+//                cp -r "$SRCROOT/../Firebase/GoogleService-Info-${googleServiceInfo}.plist"
+//                "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+//                cp -r "$SRCROOT/../Firebase/GoogleService-Info-${googleServiceInfo}.plist"
+//                "$SRCROOT/../Firebase/GoogleService-Info.plist"
+//                ${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
+//            fi
+//            """,
+//            name: "Firebase Crashlytics Run",
+//            basedOnDependencyAnalysis: false
+//        )
+//    }
+    static var sentryRun: Self {
         .post(
             script: """
-            #!/bin/sh
-            googleServiceInfo = ""
-            if [ "${CONFIGURATION}" = "Alpha" ]; then
-                googleServiceInfo="Alpha"
-            elif [ "${CONFIGURATION}" = "Release" ]; then
-                googleServiceInfo="Release"
-            fi
-
-            if [ "${CONFIGURATION}" = "Alpha" ] || [ "${CONFIGURATION}" = "Release" ]; then
-                cp -r "$SRCROOT/../Firebase/GoogleService-Info-${googleServiceInfo}.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
-                cp -r "$SRCROOT/../Firebase/GoogleService-Info-${googleServiceInfo}.plist" "$SRCROOT/../Firebase/GoogleService-Info.plist"
-                ${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
+            if ![ "${CONFIGURATION}" = "Debug" ]; then
+                $SRCROOT/../Scripts/sentry-upload-symbols.sh
             fi
             """,
-            name: "Firebase Crashlytics Run",
-            basedOnDependencyAnalysis: false
+            name: "Sentry Run",
+            basedOnDependencyAnalysis: false,
+            shellPath: "/bin/bash"
         )
-
     }
 }

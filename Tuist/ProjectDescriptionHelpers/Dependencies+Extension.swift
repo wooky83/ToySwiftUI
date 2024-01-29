@@ -11,10 +11,10 @@ public extension Package {
         requirement: .branch("master")
     )
 
-    static let FirebaseCrashlytics = Package.remote(
-        url: "https://github.com/firebase/firebase-ios-sdk.git",
-        requirement: .upToNextMajor(from: "10.12.0")
-    )
+//    static let FirebaseCrashlytics = Package.remote(
+//        url: "https://github.com/firebase/firebase-ios-sdk.git",
+//        requirement: .upToNextMajor(from: "10.12.0")
+//    )
 
     static let RxSwift = Package.remote(
         url: "https://github.com/ReactiveX/RxSwift.git",
@@ -46,6 +46,11 @@ public extension Package {
         requirement: .branch("main")
     )
 
+    static let Sentry = Package.remote(
+        url: "https://github.com/getsentry/sentry-cocoa",
+        requirement: .upToNextMajor(from: "8.18.0")
+    )
+
 }
 
 public typealias Dependency = TargetDependency
@@ -58,7 +63,8 @@ public extension Dependency {
 public extension Dependency.MyPackage {
     static let SWUtil: Dependency = .package(product: "SWUtil")
     static let CombineNetworkKit: Dependency = .package(product: "CombineNetworkKit")
-    static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
+//    static let FirebaseCrashlytics: Dependency = .package(product: "FirebaseCrashlytics")
+    static let Sentry: Dependency = .package(product: "Sentry")
     static let RxSwift: Dependency = .package(product: "RxSwift")
     static let RxCocoa: Dependency = .package(product: "RxCocoa")
     static let SanpKit: Dependency = .package(product: "SnapKit")
