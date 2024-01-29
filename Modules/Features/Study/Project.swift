@@ -1,6 +1,6 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let name = "Architecture"
+let name = "Study"
 
 let project = Project.feature(name: name)

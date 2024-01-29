@@ -9,7 +9,7 @@ import ProjectDescription
 public enum Constants {
     public static let platform: Platform = .iOS
     public static let reverseOrganizationName: String = "com.wooky"
-    public static let minimumDeploymentTarget: DeploymentTarget = .iOS(targetVersion: "15.0", devices: .iphone)
+    public static let minimumDeploymentTarget: DeploymentTarget = .iOS(targetVersion: "16.0", devices: .iphone)
 }
 
 public extension Project {
