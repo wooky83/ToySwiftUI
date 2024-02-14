@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 

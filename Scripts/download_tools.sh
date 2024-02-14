@@ -34,8 +34,6 @@ function check_required_tools() {
   if [ ! -x "$(command -v tuist)" ]; then
     curl https://mise.run | sh
     ~/.local/bin/mise install tuist
-    mise use -g tuist
-    # export PATH="$HOME/.local/share/mise/shims:$PATH"
   fi
 }
 
