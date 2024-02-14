@@ -3,7 +3,7 @@
 readonly notice_color=$'\033[0;32m' # green
 readonly no_color=$'\033[0m'
 
-NEED_TOOL_LIST=("swiftformat" "swiftlint" "xcodes")
+NEED_TOOL_LIST=("swiftformat" "swiftlint" "xcodes" "tuist")
 SCRIPT_DIR=$(dirname "$0")
 
 function check_brew() {
@@ -31,9 +31,9 @@ function check_required_tools() {
     gem install xcpretty
   fi
 
-  if [ ! -x "$(command -v tuist)" ]; then
-    sh $SCRIPT_DIR/download_tuist.sh
-  fi
+  # if [ ! -x "$(command -v tuist)" ]; then
+  #   sh $SCRIPT_DIR/download_tuist.sh
+  # fi
 }
 
 echo "${notice_color}[Check and download tools.]${no_color}"
