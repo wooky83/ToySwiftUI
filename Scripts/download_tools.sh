@@ -32,7 +32,8 @@ function check_required_tools() {
   fi
 
   if [ ! -x "$(command -v tuist)" ]; then
-    sh $SCRIPT_DIR/download_tuist.sh
+    curl https://mise.run | sh
+    ~/.local/bin/mise install tuist
   fi
 }
 
