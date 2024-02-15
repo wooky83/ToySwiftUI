@@ -19,7 +19,7 @@ public struct TopView: View {
                     Button(action: {
                         path.append(item)
                     }, label: {
-                        Text(item.rawValue)
+                        Text(item.rawValue.capitalized)
                     })
                 }
             }
@@ -38,6 +38,8 @@ public struct TopView: View {
                     ObservableTutorialView()
                 case .list:
                     SwiftUIListView()
+                case .navigationSplitView:
+                    SplitView()
                 }
             }
         }
@@ -68,6 +70,7 @@ enum ViewType: String, Hashable, CaseIterable, Identifiable {
     case testActor
     case obsTutorial
     case list
+    case navigationSplitView
 }
 
 #Preview {
