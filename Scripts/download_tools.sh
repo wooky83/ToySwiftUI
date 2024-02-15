@@ -33,7 +33,7 @@ function check_required_tools() {
 
   if [ ! -x "$(command -v tuist)" ]; then
     curl https://mise.run | sh
-    ~/.local/bin/mise install tuist
+    mise install tuist
   fi
 }
 
