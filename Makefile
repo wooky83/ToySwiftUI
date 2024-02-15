@@ -1,4 +1,4 @@
-SHELL = env PATH=$(HOME)/.rbenv/bin:$(HOME)/.rbenv/shims:"$(PATH)" /bin/bash -o pipefail
+SHELL = env PATH=$(HOME)/.rbenv/bin:$(HOME)/.rbenv/shims:${HOME}/.local/bin:${HOME}/.local/share/mise/shims:"$(PATH)" /bin/bash -o pipefail
 
 .PHONY: dev_beta dev_rc dev_beta_sim dev_beta_sim_only dev_rc_sim beta rc rc_debug testflight lds_demo 
 test: clean ## Clean
