@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install gems if a Gemfile exists
 if [ -e "Gemfile" ]; then

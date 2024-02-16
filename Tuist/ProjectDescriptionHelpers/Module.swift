@@ -30,11 +30,11 @@ public struct Module {
     }
 
     public var testableTarget: TestableTarget {
-        .init(target: .project(path: path, target: "\(name)Test"))
+        TestableTarget.testableTarget(target: .project(path: path, target: "\(name)Test"))
     }
 
     public var uiTestableTarget: TestableTarget {
-        .init(target: .project(path: path, target: "\(name)UITest"))
+        TestableTarget.testableTarget(target: .project(path: path, target: "\(name)UITest"))
     }
 }
 
