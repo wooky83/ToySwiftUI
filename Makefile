@@ -9,3 +9,5 @@ beta:
 	@bundle exec fastlane beta
 clean:
 	@rm -rf build
+clean_branch:
+	@git branch | grep -v "main\|master" | xargs git branch -d
