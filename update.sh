@@ -36,7 +36,7 @@ fi
 defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
 echo "${notice_color}[Generating projects]${no_color}"
-tuist fetch
+tuist install
 tuist generate --no-open
 
 if ! ${CI_MODE}; then

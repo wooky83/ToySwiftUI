@@ -7,12 +7,9 @@ import ProjectDescription
 /////
 
 public enum Constants {
-    public static let platform: Platform = .iOS
+    public static let platform: Destinations =  [.iPhone, .iPad]
     public static let reverseOrganizationName: String = "com.wooky"
-    public static let minimumDeploymentTarget: DeploymentTarget = .iOS(
-        targetVersion: "16.0",
-        devices: [.iphone, .ipad]
-    )
+    public static let minimumDeploymentTarget: DeploymentTargets = .iOS("16.0")
 }
 
 public extension Project {
@@ -185,13 +182,13 @@ public extension Target {
             break
         }
 
-        return .init(
+        return target(
             name: name,
-            platform: Constants.platform,
+            destinations: Constants.platform,
             product: product,
             productName: name,
             bundleId: defaultBundleId,
-            deploymentTarget: Constants.minimumDeploymentTarget,
+            deploymentTargets: Constants.minimumDeploymentTarget,
             infoPlist: infoPlist,
             sources: sources,
             resources: resources,

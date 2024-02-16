@@ -1,7 +1,7 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let mainScheme = Scheme(
+let mainScheme = Scheme.scheme(
     name: "ToySwiftUI",
     buildAction: .buildAction(
         targets: [
