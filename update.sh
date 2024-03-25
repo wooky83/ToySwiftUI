@@ -33,7 +33,7 @@ fi
 # Build Tool Package
 # swift build --package-path tools-package 
 # Sync Provisioning
-./Script/sync-provisioning.sh 2>&1 | sed "s/^/[sync-provisioning] /" &
+# ./Script/sync-provisioning.sh 2>&1 | sed "s/^/[sync-provisioning] /" &
 
 defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 
